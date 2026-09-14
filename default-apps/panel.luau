@@ -205,7 +205,7 @@ function applyChanges()
 
       noctalia.runAsync(argv, function(result)
         if result.exitCode ~= 0 then
-          noctalia.notifyError(tr("panel.setFailed"), change.appId)
+          noctalia.notifyError(tr("panel.set_failed"), change.appId)
         end
         pendingCount = pendingCount - 1
         if pendingCount <= 0 then

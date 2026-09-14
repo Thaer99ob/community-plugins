@@ -3,9 +3,9 @@
     "title": "Default Apps",
     "loading": "Loading...",
     "none": "None",
-    "notListed": "Not Listed",
+    "not_listed": "Not Listed",
     "pick": "Pick an app...",
-    "setFailed": "Failed to set"
+    "set_failed": "Failed to set"
   },
   "category": {
     "browser": "Web Browser",
