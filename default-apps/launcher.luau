@@ -1,5 +1,5 @@
 -- launcher.luau
-local PANEL_ID = "Thaer99ob/default-apps:manager"
+local PANEL_ID = "thaer99ob/default-apps:manager"
 
 function onQuery(text)
   -- The moment you click the provider in the '/' menu, Noctalia inputs "/apps "
