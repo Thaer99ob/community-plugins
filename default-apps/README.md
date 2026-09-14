@@ -27,7 +27,7 @@ Each row shows a category, its current default, and a dropdown of installed appl
 
 ### Bar widget
 
-Add the widget to a bar from the widget picker. It provides a clean shortcut icon on your bar. Hovering displays your current default browser in a tooltip, and clicking it opens the manager panel.
+Add the widget to a bar from the widget picker. It provides a clean shortcut icon on your bar. Clicking it opens the manager panel.
 
 ### Launcher
 

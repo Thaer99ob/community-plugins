@@ -5,7 +5,14 @@
     "none": "None",
     "not_listed": "Not Listed",
     "pick": "Pick an app...",
-    "set_failed": "Failed to set"
+    "set_failed": "Failed to set",
+    "apply": "Apply",
+    "init": "Initializing...",
+    "applying": "Applying changes...",
+    "locating": "Locating desktop files...",
+    "sorting": "Sorting applications...",
+    "reading": "Reading: ",
+    "querying": "Querying xdg-mime: "
   },
   "category": {
     "browser": "Web Browser",

@@ -31,7 +31,7 @@ local SCAN_DIRS = {
 
 -- 'pending' tracks unsaved dropdown changes until Apply is clicked.
 local state = { ready = false, defaults = {}, candidates = {}, pending = {} }
-local loadingStatus = "Initializing..."
+local loadingStatus = noctalia.tr("panel.init")
 
 local function parseDesktopFile(text)
   local app = { name = nil, mimes = {}, categories = {}, hidden = false }
@@ -165,7 +165,7 @@ local function render()
     ui.row({ width = "100%", fill = 1, align = "center", justify = "space_between", paddingV = 8, paddingH = 20 }, {
       ui.label({ text = tr("panel.title"), fontSize = 16, fontWeight = "bold", color = "primary" }),
       ui.button({
-        text = "Apply",
+        text = noctalia.tr("panel.apply"),
         variant = hasPending and "primary" or "ghost",
         enabled = hasPending,
         onClick = applyChanges
@@ -183,7 +183,7 @@ function applyChanges()
   if #toApply == 0 then return end
 
   state.ready = false
-  loadingStatus = "Applying changes..."
+  loadingStatus = noctalia.tr("panel.applying")
   render()
 
   local pendingCount = #toApply
@@ -226,7 +226,7 @@ end
 local function scanCandidatesAsync(onDone)
   local seen = {}
   local queue = {}
-  loadingStatus = "Locating desktop files..."
+  loadingStatus = noctalia.tr("panel.locating")
   render()
   for _, dir in ipairs(SCAN_DIRS) do
     local abs = noctalia.expandPath(dir)
@@ -247,7 +247,7 @@ local function scanCandidatesAsync(onDone)
   end
   local nextIndex = 1
   local function finish()
-    loadingStatus = "Sorting applications..."
+    loadingStatus = noctalia.tr("panel.sorting")
     render()
     for _, cat in ipairs(CATEGORIES) do
       table.sort(result[cat.key], function(a, b) return string.lower(a.name) < string.lower(b.name) end)
@@ -258,7 +258,7 @@ local function scanCandidatesAsync(onDone)
     while nextIndex <= #queue do
       local entry = queue[nextIndex]
       nextIndex = nextIndex + 1
-      loadingStatus = "Reading: " .. entry.file
+      loadingStatus = noctalia.tr("panel.reading") .. entry.file
       render()
       local accepted = noctalia.readFileAsync(entry.path, function(text)
         if text ~= nil then
@@ -302,7 +302,7 @@ function queryDefaults()
     end
     local cat = CATEGORIES[nextIndex]
     nextIndex = nextIndex + 1
-    loadingStatus = "Querying xdg-mime: " .. cat.key
+    loadingStatus = noctalia.tr("panel.querying") .. cat.key
     render()
     noctalia.runAsync({ "xdg-mime", "query", "default", cat.mimes[1] }, function(result)
       if result.exitCode == 0 then
